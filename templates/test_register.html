@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Register</title>
+</head>
+<body>
+    <h1>Register Owner and Cars</h1>
+<form method="POST" action="/register/" id="registerForm">
+    <label for="name">Owner Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="national_code">National Code:</label>
+    <input type="number" id="national_code" name="national_code" required><br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br><br>
+
+    <label for="cars">Cars (JSON format):</label><br>
+    <textarea id="cars" name="cars" rows="5" cols="50" required>
+[
+    {"type": "small", "color": "blue", "length": 3.1, "load_volume": null},
+    {"type": "big", "color": "red", "length": 5.5, "load_volume": 400}
+]
+    </textarea><br><br>
+
+    <button type="button" onclick="submitForm()">Register</button>
+</form>
+
+<script>
+    function submitForm() {
+        const form = document.getElementById('registerForm');
+        const data = {
+            name: form.name.value,
+            national_code: form.national_code.value,
+            age: form.age.value,
+            cars: JSON.parse(form.cars.value),
+        };
+
+        fetch('/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => alert(data.message))
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>

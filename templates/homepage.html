@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .link {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Toll Management System</h1>
+        <p>Use the links and forms below to access the requested functionalities.</p>
+        
+        <div class="section">
+            <h2>List of red and blue cars</h2>
+            <a href="/cars/red-blue/" class="link">View Red and Blue Cars</a>
+        </div>
+        
+        <div class="section">
+            <h2>Register owner and car</h2>
+            <a href="/test/register/" class="link">Register Owner and Car</a>
+        </div>
+        
+        <div class="section">
+            <h2>List of cars owned by people over 70</h2>
+            <a href="/cars/owner-age/" class="link">View Cars by Senior Owners</a>
+        </div>
+        
+        <div class="section">
+            <h2>Heavy cars on narrow roads</h2>
+            <a href="/cars/heavy-narrow/" class="link">View Heavy Cars on Narrow Roads</a>
+        </div>
+        
+<div class="section">
+    <h2>Toll of a car and owner in a specific period</h2>
+    <form id="tollForm">
+        <label for="car_id">Enter Car ID:</label>
+        <input type="number" id="car_id" name="car_id" required>
+        <button type="button" onclick="calculateToll()">Calculate Toll</button>
+    </form>
+</div>
+
+<script>
+    function calculateToll() {
+        const carId = document.getElementById('car_id').value;
+
+        if (!carId) {
+            alert("Please enter a valid Car ID.");
+            return;
+        }
+
+        // Redirect to the correct URL with car_id
+        window.location.href = `/cars/toll/${carId}/`;
+    }
+</script>
+        
+        <div class="section">
+            <h2>Owners with toll violations</h2>
+            <a href="/owners/violations/" class="link">View Violating Owners</a>
+        </div>
+    </div>
+</body>
+</html>
