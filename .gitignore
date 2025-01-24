@@ -1,0 +1,14 @@
+bin/
+db.sqlite3
+lib/
+pyvenv.cfg
+__init__.py
+__pycache__
+.idea
+venv
+*/migrations/
+passenger_wsgi.py
+tmp/
+
+# images
+media/
